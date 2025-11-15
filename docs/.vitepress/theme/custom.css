@@ -14,35 +14,47 @@
   --vp-c-brand-darker: #ffffff;
 }
 
-/* Hero section improvements */
-.home .hero {
+/* Hero section improvements - Multiple selector approaches */
+.VPHome .VPHomeHero,
+.home .hero,
+[class*="VPHome"] [class*="Hero"] {
   padding: 4rem 0 2rem;
 }
 
-.home .hero .name {
+.VPHome .VPHomeHero .name,
+.home .hero .name,
+[class*="Hero"] .name {
   font-size: 3.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 
-.home .hero .text {
+.VPHome .VPHomeHero .text,
+.home .hero .text,
+[class*="Hero"] .text {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
-.home .hero .tagline {
+.VPHome .VPHomeHero .tagline,
+.home .hero .tagline,
+[class*="Hero"] .tagline {
   font-size: 1.25rem;
   color: var(--vp-c-text-2);
   margin-bottom: 2rem;
 }
 
-.home .hero .actions {
+.VPHome .VPHomeHero .actions,
+.home .hero .actions,
+[class*="Hero"] .actions {
   gap: 1rem;
 }
 
-.home .hero .action {
+.VPHome .VPHomeHero .action,
+.home .hero .action,
+[class*="Hero"] .action {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
@@ -50,45 +62,61 @@
   transition: all 0.2s;
 }
 
-.home .hero .action.brand {
+.VPHome .VPHomeHero .action.brand,
+.home .hero .action.brand,
+[class*="Hero"] .action.brand {
   background: var(--vp-c-brand);
   color: var(--vp-c-bg);
 }
 
-.home .hero .action.brand:hover {
+.VPHome .VPHomeHero .action.brand:hover,
+.home .hero .action.brand:hover,
+[class*="Hero"] .action.brand:hover {
   background: var(--vp-c-brand-dark);
   transform: translateY(-1px);
 }
 
 /* Features grid improvements */
-.home .features {
+.VPHome .VPFeatures,
+.home .features,
+[class*="VPFeatures"] {
   padding: 4rem 0;
   border-top: 1px solid var(--vp-c-divider);
 }
 
-.home .feature {
+.VPHome .VPFeature,
+.home .feature,
+[class*="VPFeature"] {
   padding: 2rem;
   border-radius: 8px;
   transition: all 0.2s;
 }
 
-.home .feature:hover {
+.VPHome .VPFeature:hover,
+.home .feature:hover,
+[class*="VPFeature"]:hover {
   background: var(--vp-c-bg-soft);
   transform: translateY(-2px);
 }
 
-.home .feature .icon {
+.VPHome .VPFeature .icon,
+.home .feature .icon,
+[class*="VPFeature"] .icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.home .feature .title {
+.VPHome .VPFeature .title,
+.home .feature .title,
+[class*="VPFeature"] .title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.home .feature .details {
+.VPHome .VPFeature .details,
+.home .feature .details,
+[class*="VPFeature"] .details {
   color: var(--vp-c-text-2);
   line-height: 1.6;
 }
@@ -162,11 +190,15 @@ h2:first-of-type {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .home .hero .name {
+  .VPHome .VPHomeHero .name,
+  .home .hero .name,
+  [class*="Hero"] .name {
     font-size: 2.5rem;
   }
   
-  .home .hero .text {
+  .VPHome .VPHomeHero .text,
+  .home .hero .text,
+  [class*="Hero"] .text {
     font-size: 1.5rem;
   }
   

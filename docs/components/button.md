@@ -78,17 +78,29 @@ export function Example() {
 
 ### Small
 
+<ComponentDemo>
+  <ButtonDemo variant="primary" size="sm">Small</ButtonDemo>
+</ComponentDemo>
+
 ```tsx
 <Button size="sm">Small</Button>
 ```
 
 ### Medium (Default)
 
+<ComponentDemo>
+  <ButtonDemo variant="primary" size="md">Medium</ButtonDemo>
+</ComponentDemo>
+
 ```tsx
 <Button size="md">Medium</Button>
 ```
 
 ### Large
+
+<ComponentDemo>
+  <ButtonDemo variant="primary" size="lg">Large</ButtonDemo>
+</ComponentDemo>
 
 ```tsx
 <Button size="lg">Large</Button>
@@ -98,17 +110,29 @@ export function Example() {
 
 ### Loading
 
+<ComponentDemo>
+  <ButtonDemo variant="primary" loading>Loading...</ButtonDemo>
+</ComponentDemo>
+
 ```tsx
 <Button loading>Loading...</Button>
 ```
 
 ### Disabled
 
+<ComponentDemo>
+  <ButtonDemo variant="primary" disabled>Disabled</ButtonDemo>
+</ComponentDemo>
+
 ```tsx
 <Button disabled>Disabled</Button>
 ```
 
 ### Full Width
+
+<ComponentDemo>
+  <ButtonDemo variant="primary" :full-width="true">Full Width</ButtonDemo>
+</ComponentDemo>
 
 ```tsx
 <Button fullWidth>Full Width</Button>
@@ -117,6 +141,14 @@ export function Example() {
 ## Examples
 
 ### Button Group
+
+<ComponentDemo>
+  <div class="flex gap-2">
+    <ButtonDemo variant="primary">Primary</ButtonDemo>
+    <ButtonDemo variant="secondary">Secondary</ButtonDemo>
+    <ButtonDemo variant="outline">Outline</ButtonDemo>
+  </div>
+</ComponentDemo>
 
 ```tsx
 <div className="flex gap-2">
@@ -127,6 +159,15 @@ export function Example() {
 ```
 
 ### With Icons
+
+<ComponentDemo>
+  <ButtonDemo variant="primary">
+    <svg class="mr-2 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+    Add Item
+  </ButtonDemo>
+</ComponentDemo>
 
 ```tsx
 <Button variant="primary">

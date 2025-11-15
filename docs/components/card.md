@@ -10,6 +10,21 @@ npx @khaimerax/nexa add card
 
 ## Usage
 
+<ComponentDemo>
+  <CardDemo>
+    <CardHeaderDemo>
+      <CardTitleDemo>Card Title</CardTitleDemo>
+      <CardDescriptionDemo>Card description</CardDescriptionDemo>
+    </CardHeaderDemo>
+    <CardContentDemo>
+      <p>Card content goes here.</p>
+    </CardContentDemo>
+    <CardFooterDemo>
+      <ButtonDemo variant="primary">Action</ButtonDemo>
+    </CardFooterDemo>
+  </CardDemo>
+</ComponentDemo>
+
 ```tsx
 import {
   Card,
@@ -42,6 +57,17 @@ export function Example() {
 
 ### Simple Card
 
+<ComponentDemo>
+  <CardDemo>
+    <CardHeaderDemo>
+      <CardTitleDemo>Simple Card</CardTitleDemo>
+    </CardHeaderDemo>
+    <CardContentDemo>
+      <p>This is a simple card with just title and content.</p>
+    </CardContentDemo>
+  </CardDemo>
+</ComponentDemo>
+
 ```tsx
 <Card>
   <CardHeader>
@@ -54,6 +80,22 @@ export function Example() {
 ```
 
 ### Card with Footer
+
+<ComponentDemo>
+  <CardDemo>
+    <CardHeaderDemo>
+      <CardTitleDemo>Card with Footer</CardTitleDemo>
+      <CardDescriptionDemo>Description text</CardDescriptionDemo>
+    </CardHeaderDemo>
+    <CardContentDemo>
+      <p>Content area</p>
+    </CardContentDemo>
+    <CardFooterDemo>
+      <ButtonDemo variant="outline">Cancel</ButtonDemo>
+      <ButtonDemo variant="primary" class="ml-2">Save</ButtonDemo>
+    </CardFooterDemo>
+  </CardDemo>
+</ComponentDemo>
 
 ```tsx
 <Card>
@@ -72,6 +114,29 @@ export function Example() {
 ```
 
 ### Card Grid
+
+<ComponentDemo>
+  <div class="grid grid-cols-3 gap-4">
+    <CardDemo>
+      <CardHeaderDemo>
+        <CardTitleDemo>Card 1</CardTitleDemo>
+      </CardHeaderDemo>
+      <CardContentDemo>Content 1</CardContentDemo>
+    </CardDemo>
+    <CardDemo>
+      <CardHeaderDemo>
+        <CardTitleDemo>Card 2</CardTitleDemo>
+      </CardHeaderDemo>
+      <CardContentDemo>Content 2</CardContentDemo>
+    </CardDemo>
+    <CardDemo>
+      <CardHeaderDemo>
+        <CardTitleDemo>Card 3</CardTitleDemo>
+      </CardHeaderDemo>
+      <CardContentDemo>Content 3</CardContentDemo>
+    </CardDemo>
+  </div>
+</ComponentDemo>
 
 ```tsx
 <div className="grid grid-cols-3 gap-4">

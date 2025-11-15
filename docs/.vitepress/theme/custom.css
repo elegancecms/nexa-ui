@@ -15,34 +15,34 @@
 }
 
 /* Hero section improvements */
-.VPHero {
+.home .hero {
   padding: 4rem 0 2rem;
 }
 
-.VPHero .name {
+.home .hero .name {
   font-size: 3.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 
-.VPHero .text {
+.home .hero .text {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
-.VPHero .tagline {
+.home .hero .tagline {
   font-size: 1.25rem;
   color: var(--vp-c-text-2);
   margin-bottom: 2rem;
 }
 
-.VPHero .actions {
+.home .hero .actions {
   gap: 1rem;
 }
 
-.VPHero .action {
+.home .hero .action {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
@@ -50,45 +50,45 @@
   transition: all 0.2s;
 }
 
-.VPHero .action.primary {
+.home .hero .action.brand {
   background: var(--vp-c-brand);
   color: var(--vp-c-bg);
 }
 
-.VPHero .action.primary:hover {
+.home .hero .action.brand:hover {
   background: var(--vp-c-brand-dark);
   transform: translateY(-1px);
 }
 
 /* Features grid improvements */
-.VPFeatures {
+.home .features {
   padding: 4rem 0;
   border-top: 1px solid var(--vp-c-divider);
 }
 
-.VPFeature {
+.home .feature {
   padding: 2rem;
   border-radius: 8px;
   transition: all 0.2s;
 }
 
-.VPFeature:hover {
+.home .feature:hover {
   background: var(--vp-c-bg-soft);
   transform: translateY(-2px);
 }
 
-.VPFeature .icon {
+.home .feature .icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.VPFeature .title {
+.home .feature .title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.VPFeature .details {
+.home .feature .details {
   color: var(--vp-c-text-2);
   line-height: 1.6;
 }
@@ -162,11 +162,11 @@ h2:first-of-type {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .VPHero .name {
+  .home .hero .name {
     font-size: 2.5rem;
   }
   
-  .VPHero .text {
+  .home .hero .text {
     font-size: 1.5rem;
   }
   

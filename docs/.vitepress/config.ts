@@ -3,7 +3,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "@khaimerax/nexa-ui",
   description: "Lightweight, zero-dependency React UI component library",
-  // base: "/nexa-ui/", // GitHub Pages için - Vercel'de kaldırın veya "/" yapın
+  base: "/", // Vercel için root path
   
   head: [
     ['link', { rel: 'stylesheet', href: '/custom.css' }]

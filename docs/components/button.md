@@ -10,6 +10,10 @@ npx @khaimerax/nexa add button
 
 ## Usage
 
+<ComponentDemo>
+  <ButtonDemo variant="primary" text="Click me" />
+</ComponentDemo>
+
 ```tsx
 import { Button } from "@/components/ui/button";
 
@@ -22,11 +26,19 @@ export function Example() {
 
 ### Primary
 
+<ComponentDemo>
+  <ButtonDemo variant="primary" />
+</ComponentDemo>
+
 ```tsx
 <Button variant="primary">Primary</Button>
 ```
 
 ### Secondary
+
+<ComponentDemo>
+  <ButtonDemo variant="secondary" />
+</ComponentDemo>
 
 ```tsx
 <Button variant="secondary">Secondary</Button>
@@ -34,17 +46,29 @@ export function Example() {
 
 ### Outline
 
+<ComponentDemo>
+  <ButtonDemo variant="outline" />
+</ComponentDemo>
+
 ```tsx
 <Button variant="outline">Outline</Button>
 ```
 
 ### Ghost
 
+<ComponentDemo>
+  <ButtonDemo variant="ghost" />
+</ComponentDemo>
+
 ```tsx
 <Button variant="ghost">Ghost</Button>
 ```
 
 ### Danger
+
+<ComponentDemo>
+  <ButtonDemo variant="danger" />
+</ComponentDemo>
 
 ```tsx
 <Button variant="danger">Danger</Button>

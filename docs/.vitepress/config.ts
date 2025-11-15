@@ -6,7 +6,9 @@ export default defineConfig({
   base: "/", // Vercel için root path
   
   head: [
-    ['link', { rel: 'stylesheet', href: '/custom.css' }]
+    ['link', { rel: 'stylesheet', href: '/custom.css' }],
+    // Tailwind CSS v4 CDN
+    ['script', { src: 'https://cdn.tailwindcss.com' }]
   ],
   
   themeConfig: {

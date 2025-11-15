@@ -1,0 +1,30 @@
+:root {
+  --vp-c-brand: #000000;
+  --vp-c-brand-light: #333333;
+  --vp-c-brand-lighter: #666666;
+  --vp-c-brand-dark: #000000;
+  --vp-c-brand-darker: #000000;
+}
+
+.dark {
+  --vp-c-brand: #ffffff;
+  --vp-c-brand-light: #e5e5e5;
+  --vp-c-brand-lighter: #cccccc;
+  --vp-c-brand-dark: #ffffff;
+  --vp-c-brand-darker: #ffffff;
+}
+
+/* Code block styling */
+.vp-code-group {
+  margin: 1rem 0;
+}
+
+/* Component examples */
+.component-example {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+

@@ -61,6 +61,46 @@ function App() {
 │   └── ...            # Other components
 ```
 
+## 🚀 Release & Publishing
+
+### Automated Release Script
+
+Otomatik release script'i hem NPM'e publish hem de GitHub'a push yapar:
+
+```bash
+# Patch release (0.1.0 -> 0.1.1)
+npm run release:patch
+
+# Minor release (0.1.0 -> 0.2.0)
+npm run release:minor
+
+# Major release (0.1.0 -> 1.0.0)
+npm run release:major
+
+# Default (patch)
+npm run release
+```
+
+Script şunları yapar:
+1. ✅ Git durumunu kontrol eder (uncommitted changes varsa uyarır)
+2. ✅ Tüm paketleri build eder
+3. ✅ Versiyonu günceller (patch/minor/major)
+4. ✅ NPM'e publish eder
+5. ✅ Değişiklikleri commit eder
+6. ✅ GitHub'a push eder
+
+### Manual Publishing
+
+Manuel olarak publish etmek için:
+
+```bash
+# Build
+npm run build
+
+# Publish CLI package
+npm run publish:cli
+```
+
 ## 🤝 Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.

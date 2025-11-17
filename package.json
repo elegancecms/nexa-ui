@@ -17,7 +17,11 @@
     "publish:cli": "cd packages/cli && npm publish --access public",
     "publish:core": "cd packages/core && npm publish --access public",
     "publish:button": "cd packages/button && npm publish --access public",
-    "publish:all": "npm run publish:cli"
+    "publish:all": "npm run publish:cli",
+    "release": "node scripts/release.js",
+    "release:patch": "node scripts/release.js patch",
+    "release:minor": "node scripts/release.js minor",
+    "release:major": "node scripts/release.js major"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

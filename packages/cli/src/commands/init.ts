@@ -5,7 +5,7 @@ import * as path from "path";
 const __dirname = path.resolve();
 
 export async function init() {
-  console.log(chalk.blue("Initializing @khaimerax/nexa-ui..."));
+  console.log(chalk.blue("Initializing @khaimerax/nexa-ui...\n"));
 
   try {
     // Check if package.json exists
@@ -32,7 +32,11 @@ export async function init() {
 
     // Create components/ui directory
     const componentsDir = path.join(process.cwd(), "components", "ui");
+    const componentsExists = await fs.pathExists(componentsDir);
     await fs.ensureDir(componentsDir);
+    if (!componentsExists) {
+      console.log(chalk.green("✓ Created components/ui directory"));
+    }
 
     // Create utils file for cn function
     const utilsPath = path.join(process.cwd(), "lib", "utils.ts");

@@ -1,0 +1,215 @@
+================================================================================
+@khaimerax/nexa-ui - RELEASE SCRIPT KULLANIM KILAVUZU
+================================================================================
+
+Bu dosya otomatik release script'inin nasıl kullanılacağını açıklar.
+
+================================================================================
+HIZLI BAŞLANGIÇ
+================================================================================
+
+1. Patch Release (Küçük güncellemeler, bug fix'ler):
+   npm run release:patch
+
+2. Minor Release (Yeni özellikler, yeni component'ler):
+   npm run release:minor
+
+3. Major Release (Breaking changes):
+   npm run release:major
+
+================================================================================
+DETAYLI KULLANIM
+================================================================================
+
+RELEASE TİPLERİ
+---------------
+
+1. PATCH (0.1.0 -> 0.1.1)
+   - Bug fix'ler
+   - Küçük düzeltmeler
+   - Template güncellemeleri
+   Kullanım: npm run release:patch
+
+2. MINOR (0.1.0 -> 0.2.0)
+   - Yeni component'ler ekleme
+   - Yeni özellikler
+   - Geriye dönük uyumlu değişiklikler
+   Kullanım: npm run release:minor
+
+3. MAJOR (0.1.0 -> 1.0.0)
+   - Breaking changes
+   - Büyük API değişiklikleri
+   - Geriye dönük uyumsuz güncellemeler
+   Kullanım: npm run release:major
+
+================================================================================
+SCRIPT'İN YAPTIĞI ADIMLAR
+================================================================================
+
+1. GIT DURUMU KONTROLÜ
+   - Uncommitted changes varsa script durur ve uyarı verir
+   - Önce değişiklikleri commit etmeniz gerekir
+
+2. BUILD İŞLEMİ
+   - Tüm paketleri build eder (npm run build)
+   - Build başarısız olursa script durur
+
+3. VERSİYON GÜNCELLEME
+   - packages/cli/package.json dosyasındaki versiyonu günceller
+   - Seçtiğiniz tipe göre (patch/minor/major) versiyonu artırır
+
+4. NPM PUBLISH
+   - @khaimerax/nexa paketini NPM'e yayımlar
+   - --access public flag'i ile scope'lu paket olarak yayımlar
+
+5. GIT COMMIT
+   - Versiyon değişikliğini otomatik commit eder
+   - Commit mesajı: "chore: release vX.X.X"
+
+6. GITHUB PUSH
+   - Değişiklikleri GitHub'a push eder
+   - developer branch'ine push yapar
+
+================================================================================
+KULLANIM ÖRNEKLERİ
+================================================================================
+
+ÖRNEK 1: Bug Fix Sonrası Release
+----------------------------------
+1. Bug fix'i yapın ve commit edin:
+   git add .
+   git commit -m "fix: button disabled state issue"
+   git push
+
+2. Release yapın:
+   npm run release:patch
+
+ÖRNEK 2: Yeni Component Ekleme Sonrası Release
+------------------------------------------------
+1. Yeni component'i ekleyin ve commit edin:
+   git add .
+   git commit -m "feat: add input component"
+   git push
+
+2. Release yapın:
+   npm run release:minor
+
+ÖRNEK 3: Breaking Change Sonrası Release
+-----------------------------------------
+1. Breaking change'i yapın ve commit edin:
+   git add .
+   git commit -m "feat!: change button API"
+   git push
+
+2. Release yapın:
+   npm run release:major
+
+================================================================================
+ÖNEMLİ NOTLAR
+================================================================================
+
+1. UNCOMMITTED CHANGES
+   - Script çalışmadan önce tüm değişiklikleri commit etmelisiniz
+   - Eğer uncommitted changes varsa script durur ve hata verir
+
+2. NPM GİRİŞİ
+   - NPM'e giriş yapmış olmanız gerekir
+   - npm login komutu ile giriş yapabilirsiniz
+   - npm whoami ile kontrol edebilirsiniz
+
+3. ORGANIZASYON İZİNLERİ
+   - @khaimerax organizasyonuna erişiminiz olmalı
+   - Paketi publish etme yetkiniz olmalı
+
+4. GIT BRANCH
+   - Script developer branch'ine push yapar
+   - Farklı bir branch kullanıyorsanız script'i güncelleyin
+
+5. VERSİYON KONTROLÜ
+   - Versiyon sadece packages/cli/package.json'da güncellenir
+   - Diğer paketlerin versiyonları güncellenmez
+
+================================================================================
+SORUN GİDERME
+================================================================================
+
+SORUN: "You have uncommitted changes"
+ÇÖZÜM: 
+  git add .
+  git commit -m "your message"
+  git push
+
+SORUN: "Build failed"
+ÇÖZÜM:
+  npm run build komutunu manuel çalıştırın ve hataları kontrol edin
+
+SORUN: "NPM publish failed"
+ÇÖZÜM:
+  - npm login ile giriş yaptığınızdan emin olun
+  - npm whoami ile kontrol edin
+  - @khaimerax organizasyonuna erişiminiz olduğundan emin olun
+
+SORUN: "Git push failed"
+ÇÖZÜM:
+  - Git remote'un doğru olduğundan emin olun
+  - Branch adının doğru olduğundan emin olun
+  - Git credentials'larınızın doğru olduğundan emin olun
+
+================================================================================
+MANUEL YAYIMLAMA
+================================================================================
+
+Script kullanmak istemiyorsanız manuel olarak yapabilirsiniz:
+
+1. Build:
+   npm run build
+
+2. Versiyon güncelleme:
+   cd packages/cli
+   npm version patch  # veya minor, major
+   cd ../..
+
+3. Publish:
+   npm run publish:cli
+
+4. Commit ve Push:
+   git add packages/cli/package.json
+   git commit -m "chore: release vX.X.X"
+   git push
+
+================================================================================
+KONTROL LİSTESİ
+================================================================================
+
+Release yapmadan önce kontrol edin:
+
+[ ] Tüm değişiklikler commit edildi mi?
+[ ] Build başarılı mı? (npm run build)
+[ ] NPM'e giriş yaptınız mı? (npm whoami)
+[ ] @khaimerax organizasyonuna erişiminiz var mı?
+[ ] Doğru release tipini seçtiniz mi? (patch/minor/major)
+[ ] Git branch doğru mu? (developer)
+
+================================================================================
+SONUÇ
+================================================================================
+
+Script başarıyla tamamlandıktan sonra:
+
+✅ Paket NPM'de yayımlandı: https://www.npmjs.com/package/@khaimerax/nexa
+✅ Versiyon GitHub'da güncellendi
+✅ Yeni versiyon kullanıma hazır
+
+Kullanıcılar şu komutla güncel versiyonu kurabilir:
+npm install -D @khaimerax/nexa@latest
+
+================================================================================
+İLETİŞİM
+================================================================================
+
+Sorularınız için:
+- GitHub Issues: https://github.com/elegancecms/nexa-ui/issues
+- NPM Package: https://www.npmjs.com/package/@khaimerax/nexa
+
+================================================================================
+

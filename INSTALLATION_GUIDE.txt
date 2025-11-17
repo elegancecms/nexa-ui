@@ -1,0 +1,179 @@
+================================================================================
+@khaimerax/nexa-ui - KURULUM KILAVUZU
+================================================================================
+
+Bu dosya başka bir projeye @khaimerax/nexa-ui paketini nasıl kuracağınızı açıklar.
+
+================================================================================
+ADIM ADIM KURULUM
+================================================================================
+
+ADIM 1: Paketi Kurun
+--------------------
+Yeni projenizin kök dizininde şu komutu çalıştırın:
+
+    npm install -D @khaimerax/nexa
+
+Bu komut paketi devDependency olarak kurar ve package.json dosyanıza ekler.
+
+NOT: Eğer sadece npx kullanırsanız paket otomatik indirilir ama package.json'a 
+eklenmez. Bu yüzden önce npm install yapmanız önerilir.
+
+
+ADIM 2: Projeyi Initialize Edin
+---------------------------------
+Paket kurulduktan sonra projeyi initialize edin:
+
+    npx @khaimerax/nexa init
+
+Bu komut şunları yapar:
+- components/ui klasörü oluşturur
+- lib/utils.ts dosyası oluşturur (cn utility fonksiyonu ile)
+- Tailwind CSS konfigürasyonunu kontrol eder
+
+
+ADIM 3: Component Ekleyin
+---------------------------
+Artık component'leri ekleyebilirsiniz:
+
+    # Button component ekle
+    npx @khaimerax/nexa add button
+
+    # Card component ekle
+    npx @khaimerax/nexa add card
+
+    # Özel dizin belirt
+    npx @khaimerax/nexa add button --dir src/components
+
+
+ADIM 4: Component'leri Kullanın
+-------------------------------
+Component'ler projenize kaynak kod olarak kopyalandığı için direkt kullanabilirsiniz:
+
+    import { Button } from "@/components/ui/button";
+
+    function App() {
+      return <Button variant="primary">Click me</Button>;
+    }
+
+================================================================================
+TAM ÖRNEK KURULUM
+================================================================================
+
+Yeni bir React projesine kurulum örneği:
+
+    1. Proje dizinine gidin:
+       cd my-react-app
+
+    2. Paketi kurun:
+       npm install -D @khaimerax/nexa
+
+    3. Initialize edin:
+       npx @khaimerax/nexa init
+
+    4. Component ekleyin:
+       npx @khaimerax/nexa add button
+       npx @khaimerax/nexa add card
+
+    5. Kullanın:
+       import { Button } from "@/components/ui/button";
+       import { Card } from "@/components/ui/card";
+
+================================================================================
+GEREKSİNİMLER
+================================================================================
+
+Projenizde şunların kurulu olması gerekir:
+
+- React ^18.0.0
+- Tailwind CSS ^4.0.0 (veya ^3.x)
+- TypeScript (önerilir)
+
+Tailwind CSS kurulumu:
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+
+================================================================================
+SORUN GİDERME
+================================================================================
+
+SORUN: "Command not found: nexa"
+ÇÖZÜM: 
+  npm install -D @khaimerax/nexa
+  komutunu çalıştırdığınızdan emin olun.
+
+SORUN: "Cannot find module '@/lib/utils'"
+ÇÖZÜM:
+  npx @khaimerax/nexa init
+  komutunu çalıştırdığınızdan emin olun.
+
+SORUN: "Component not found"
+ÇÖZÜM:
+  npx @khaimerax/nexa add <component-name>
+  komutu ile component'i eklediğinizden emin olun.
+
+SORUN: "Tailwind CSS not configured"
+ÇÖZÜM:
+  Tailwind CSS'in kurulu ve konfigüre edilmiş olduğundan emin olun.
+  tailwind.config.js dosyasının mevcut olduğunu kontrol edin.
+
+================================================================================
+ÖNEMLİ NOTLAR
+================================================================================
+
+1. PAKET KURULUMU
+   - Paket devDependency olarak kurulur (--save-dev)
+   - Production build'e dahil edilmez
+   - Sadece development sırasında kullanılır
+
+2. COMPONENT'LER KAYNAK KOD OLARAK KOPYALANIR
+   - Component'ler projenize kaynak kod olarak kopyalanır
+   - İstediğiniz gibi düzenleyebilirsiniz
+   - npm paketi olarak kurulmaz, direkt kullanılır
+
+3. NPX KULLANIMI
+   - npx komutu paketi otomatik indirir ve çalıştırır
+   - Paket zaten kuruluysa cache'den kullanır
+   - Her seferinde npm install yapmanıza gerek yok
+
+4. PATH ALIAS (@/)
+   - @/ alias'ı genellikle src/ dizinini işaret eder
+   - tsconfig.json veya vite.config.ts'de tanımlı olmalı
+   - Örnek: "@/*": ["./src/*"]
+
+================================================================================
+KOMUT ÖZETİ
+================================================================================
+
+# 1. Kurulum
+npm install -D @khaimerax/nexa
+
+# 2. Initialize
+npx @khaimerax/nexa init
+
+# 3. Component ekle
+npx @khaimerax/nexa add button
+npx @khaimerax/nexa add card
+
+# 4. Yardım
+npx @khaimerax/nexa --help
+
+================================================================================
+MEVCUT COMPONENT'LER
+================================================================================
+
+- button  : Button component (variants: primary, secondary, outline, ghost, danger)
+- card    : Card component (Card, CardHeader, CardTitle, CardContent, CardFooter)
+
+Daha fazla component için: https://www.npmjs.com/package/@khaimerax/nexa
+
+================================================================================
+İLETİŞİM
+================================================================================
+
+Sorularınız için:
+- GitHub Issues: https://github.com/elegancecms/nexa-ui/issues
+- NPM Package: https://www.npmjs.com/package/@khaimerax/nexa
+
+================================================================================
+

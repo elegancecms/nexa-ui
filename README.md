@@ -14,13 +14,13 @@ Lightweight, zero-dependency React UI component library built with TypeScript an
 
 ## 📦 Installation
 
+### Step 1: Install the package
+
 ```bash
 npm install -D @khaimerax/nexa
 ```
 
-## 🚀 Quick Start
-
-### 1. Initialize
+### Step 2: Initialize your project
 
 ```bash
 npx @khaimerax/nexa init
@@ -30,7 +30,7 @@ This creates:
 - `components/ui` directory
 - `lib/utils.ts` with the `cn` utility function
 
-### 2. Add Components
+### Step 3: Add Components
 
 ```bash
 # Add a button component

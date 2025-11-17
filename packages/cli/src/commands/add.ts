@@ -60,8 +60,8 @@ export async function addComponent(componentName: string, targetDir: string) {
       process.exit(1);
     }
 
-    // Create target directory
-    const targetPath = path.join(process.cwd(), targetDir);
+    // Create target directory with component name
+    const targetPath = path.join(process.cwd(), targetDir, componentName);
     await fs.ensureDir(targetPath);
 
     // Copy template files recursively (replacing glob with native fs)

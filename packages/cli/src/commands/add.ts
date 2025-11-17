@@ -1,7 +1,6 @@
 import chalk from "chalk";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { glob } from "glob";
 
 // Get current directory (CommonJS)
 const getCurrentDir = () => {
@@ -65,35 +64,39 @@ export async function addComponent(componentName: string, targetDir: string) {
     const targetPath = path.join(process.cwd(), targetDir);
     await fs.ensureDir(targetPath);
 
-    // Copy template files
-    const templateFiles = await glob("**/*", {
-      cwd: templatePath,
-      dot: false,
-      ignore: ["node_modules/**"],
-      absolute: false,
-    });
-
-    for (const file of templateFiles) {
-      const srcPath = path.join(templatePath, file);
-      const destPath = path.join(targetPath, file);
-
-      // Skip directories, they'll be created automatically
-      const stat = await fs.stat(srcPath);
+    // Copy template files recursively (replacing glob with native fs)
+    async function copyRecursive(src: string, dest: string) {
+      const stat = await fs.stat(src);
+      
       if (stat.isDirectory()) {
-        continue;
+        await fs.ensureDir(dest);
+        const entries = await fs.readdir(src);
+        
+        for (const entry of entries) {
+          // Skip node_modules
+          if (entry === "node_modules") {
+            continue;
+          }
+          
+          const srcPath = path.join(src, entry);
+          const destPath = path.join(dest, entry);
+          await copyRecursive(srcPath, destPath);
+        }
+      } else {
+        // Ensure parent directory exists
+        await fs.ensureDir(path.dirname(dest));
+        
+        // Read and process file content
+        let content = await fs.readFile(src, "utf-8");
+        
+        // Replace imports if needed (e.g., @/lib/utils -> ../../lib/utils)
+        // This is a simple implementation, can be enhanced
+        
+        await fs.writeFile(dest, content);
       }
-
-      // Ensure parent directory exists
-      await fs.ensureDir(path.dirname(destPath));
-
-      // Read and process file content
-      let content = await fs.readFile(srcPath, "utf-8");
-
-      // Replace imports if needed (e.g., @/lib/utils -> ../../lib/utils)
-      // This is a simple implementation, can be enhanced
-
-      await fs.writeFile(destPath, content);
     }
+
+    await copyRecursive(templatePath, targetPath);
 
     console.log(chalk.green(`✓ Component "${componentName}" added successfully!`));
     console.log(chalk.blue(`\nFiles created in: ${targetDir}/${componentName}`));

@@ -24,6 +24,10 @@ ADIM 2: Projeyi Initialize Edin
 ---------------------------------
 Paket kurulduktan sonra projeyi initialize edin:
 
+Windows'ta NPX sorunu yaşıyorsanız (dosya editörde açılıyorsa):
+    node node_modules/@khaimerax/nexa/dist/cli.js init
+
+Veya NPX ile (Linux/Mac'te çalışır):
     npx @khaimerax/nexa init
 
 Bu komut şunları yapar:
@@ -36,10 +40,12 @@ ADIM 3: Component Ekleyin
 ---------------------------
 Artık component'leri ekleyebilirsiniz:
 
-    # Button component ekle
-    npx @khaimerax/nexa add button
+Windows'ta NPX sorunu yaşıyorsanız:
+    node node_modules/@khaimerax/nexa/dist/cli.js add button
+    node node_modules/@khaimerax/nexa/dist/cli.js add card
 
-    # Card component ekle
+Veya NPX ile:
+    npx @khaimerax/nexa add button
     npx @khaimerax/nexa add card
 
     # Özel dizin belirt
@@ -97,10 +103,11 @@ Tailwind CSS kurulumu:
 SORUN GİDERME
 ================================================================================
 
-SORUN: "Command not found: nexa"
+SORUN: "Command not found: nexa" veya Windows'ta NPX dosyayı editörde açıyor
 ÇÖZÜM: 
-  npm install -D @khaimerax/nexa
-  komutunu çalıştırdığınızdan emin olun.
+  Windows'ta NPX sorunu yaşıyorsanız direkt node komutunu kullanın:
+  node node_modules/@khaimerax/nexa/dist/cli.js init
+  node node_modules/@khaimerax/nexa/dist/cli.js add button
 
 SORUN: "Cannot find module '@/lib/utils'"
 ÇÖZÜM:
@@ -131,10 +138,11 @@ SORUN: "Tailwind CSS not configured"
    - İstediğiniz gibi düzenleyebilirsiniz
    - npm paketi olarak kurulmaz, direkt kullanılır
 
-3. NPX KULLANIMI
+3. NPX KULLANIMI (Windows'ta Sorun Olabilir)
    - npx komutu paketi otomatik indirir ve çalıştırır
    - Paket zaten kuruluysa cache'den kullanır
-   - Her seferinde npm install yapmanıza gerek yok
+   - Windows'ta NPX dosyayı editörde açıyorsa direkt node komutunu kullanın:
+     node node_modules/@khaimerax/nexa/dist/cli.js <command>
 
 4. PATH ALIAS (@/)
    - @/ alias'ı genellikle src/ dizinini işaret eder
@@ -149,9 +157,16 @@ KOMUT ÖZETİ
 npm install -D @khaimerax/nexa
 
 # 2. Initialize
+# Windows'ta NPX sorunu varsa:
+node node_modules/@khaimerax/nexa/dist/cli.js init
+# Veya:
 npx @khaimerax/nexa init
 
 # 3. Component ekle
+# Windows'ta NPX sorunu varsa:
+node node_modules/@khaimerax/nexa/dist/cli.js add button
+node node_modules/@khaimerax/nexa/dist/cli.js add card
+# Veya:
 npx @khaimerax/nexa add button
 npx @khaimerax/nexa add card
 

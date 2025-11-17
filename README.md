@@ -22,6 +22,12 @@ npm install -D @khaimerax/nexa
 
 ### Step 2: Initialize your project
 
+**Windows users:** If NPX opens the file in an editor instead of running it, use:
+```bash
+node node_modules/@khaimerax/nexa/dist/cli.js init
+```
+
+**Linux/Mac users:**
 ```bash
 npx @khaimerax/nexa init
 ```
@@ -32,11 +38,15 @@ This creates:
 
 ### Step 3: Add Components
 
+**Windows users:**
 ```bash
-# Add a button component
-npx @khaimerax/nexa add button
+node node_modules/@khaimerax/nexa/dist/cli.js add button
+node node_modules/@khaimerax/nexa/dist/cli.js add card
+```
 
-# Add a card component
+**Linux/Mac users:**
+```bash
+npx @khaimerax/nexa add button
 npx @khaimerax/nexa add card
 ```
 

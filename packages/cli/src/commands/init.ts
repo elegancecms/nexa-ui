@@ -17,6 +17,25 @@ export async function init() {
 
     const packageJson = await fs.readJson(packageJsonPath);
 
+    // Detect Laravel project
+    const isLaravel = await fs.pathExists(path.join(process.cwd(), "artisan")) ||
+                      await fs.pathExists(path.join(process.cwd(), "app")) ||
+                      await fs.pathExists(path.join(process.cwd(), "resources"));
+
+    // Determine directories based on project type
+    let componentsDir: string;
+    let utilsPath: string;
+
+    if (isLaravel) {
+      // Laravel project structure
+      componentsDir = path.join(process.cwd(), "resources", "js", "components", "ui");
+      utilsPath = path.join(process.cwd(), "resources", "js", "lib", "utils.ts");
+    } else {
+      // Standard React/Next.js project structure
+      componentsDir = path.join(process.cwd(), "components", "ui");
+      utilsPath = path.join(process.cwd(), "lib", "utils.ts");
+    }
+
     // Check if Tailwind CSS is installed
     const hasTailwind =
       packageJson.dependencies?.tailwindcss ||
@@ -31,15 +50,13 @@ export async function init() {
     }
 
     // Create components/ui directory
-    const componentsDir = path.join(process.cwd(), "components", "ui");
     const componentsExists = await fs.pathExists(componentsDir);
     await fs.ensureDir(componentsDir);
     if (!componentsExists) {
-      console.log(chalk.green("✓ Created components/ui directory"));
+      console.log(chalk.green(`✓ Created ${isLaravel ? "resources/js/components/ui" : "components/ui"} directory`));
     }
 
     // Create utils file for cn function
-    const utilsPath = path.join(process.cwd(), "lib", "utils.ts");
     const utilsDir = path.dirname(utilsPath);
     await fs.ensureDir(utilsDir);
 
@@ -68,17 +85,23 @@ export async function init() {
 
     if (tailwindConfigPathToUse) {
       console.log(chalk.green(`✓ Found Tailwind config at ${tailwindConfigPathToUse}`));
+      const contentPath = isLaravel 
+        ? "resources/js/components/ui/**/*.{ts,tsx}"
+        : "components/ui/**/*.{ts,tsx}";
       console.log(
         chalk.yellow(
-          "  Make sure your content paths include 'components/ui/**/*.{ts,tsx}'"
+          `  Make sure your content paths include '${contentPath}'`
         )
       );
     }
 
     console.log(chalk.green("\n✓ @khaimerax/nexa-ui initialized successfully!"));
     console.log(chalk.blue("\nYou can now add components with:"));
-    console.log(chalk.cyan("  npx @khaimerax/nexa add button"));
-    console.log(chalk.cyan("  npx @khaimerax/nexa add card"));
+    const addCommand = isLaravel
+      ? `  node node_modules/@khaimerax/nexa/dist/cli.js add button --dir resources/js/components/ui`
+      : "  npx @khaimerax/nexa add button";
+    console.log(chalk.cyan(addCommand));
+    console.log(chalk.cyan(`  npx @khaimerax/nexa add card${isLaravel ? " --dir resources/js/components/ui" : ""}`));
   } catch (error) {
     console.error(chalk.red("Error initializing @khaimerax/nexa-ui:"), error);
     process.exit(1);

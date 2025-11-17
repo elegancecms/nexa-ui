@@ -22,9 +22,17 @@ program
   .command("add")
   .description("Add a component to your project")
   .argument("<component>", "Component name (e.g., button, card)")
-  .option("-d, --dir <dir>", "Target directory", "components/ui")
+  .option("-d, --dir <dir>", "Target directory (default: auto-detect)")
   .action(async (component: string, options: { dir?: string }) => {
-    await addComponent(component, options.dir || "components/ui");
+    // Auto-detect Laravel project
+    const fs = require("fs-extra");
+    const path = require("path");
+    const isLaravel = await fs.pathExists(path.join(process.cwd(), "artisan")) ||
+                      await fs.pathExists(path.join(process.cwd(), "app")) ||
+                      await fs.pathExists(path.join(process.cwd(), "resources"));
+    
+    const defaultDir = options.dir || (isLaravel ? "resources/js/components/ui" : "components/ui");
+    await addComponent(component, defaultDir);
   });
 
 program.parse();

@@ -60,46 +60,43 @@ export async function addComponent(componentName: string, targetDir: string) {
       process.exit(1);
     }
 
-    // Create target directory with component name
-    const targetPath = path.join(process.cwd(), targetDir, componentName);
-    await fs.ensureDir(targetPath);
-
-    // Copy template files recursively (replacing glob with native fs)
-    async function copyRecursive(src: string, dest: string) {
-      const stat = await fs.stat(src);
+    // Find the main component file (componentName.tsx)
+    const componentFileName = `${componentName}.tsx`;
+    const componentFilePath = path.join(templatePath, componentFileName);
+    
+    // Check if component file exists
+    if (!(await fs.pathExists(componentFilePath))) {
+      console.error(
+        chalk.red(
+          `Component file "${componentFileName}" not found in template.\n\nAvailable files:`
+        )
+      );
       
-      if (stat.isDirectory()) {
-        await fs.ensureDir(dest);
-        const entries = await fs.readdir(src);
-        
-        for (const entry of entries) {
-          // Skip node_modules
-          if (entry === "node_modules") {
-            continue;
-          }
-          
-          const srcPath = path.join(src, entry);
-          const destPath = path.join(dest, entry);
-          await copyRecursive(srcPath, destPath);
-        }
-      } else {
-        // Ensure parent directory exists
-        await fs.ensureDir(path.dirname(dest));
-        
-        // Read and process file content
-        let content = await fs.readFile(src, "utf-8");
-        
-        // Replace imports if needed (e.g., @/lib/utils -> ../../lib/utils)
-        // This is a simple implementation, can be enhanced
-        
-        await fs.writeFile(dest, content);
-      }
+      const files = await fs.readdir(templatePath);
+      files.forEach((file) => {
+        console.log(chalk.cyan(`  - ${file}`));
+      });
+      
+      process.exit(1);
     }
 
-    await copyRecursive(templatePath, targetPath);
+    // Create target directory (without component name subfolder)
+    const targetDirPath = path.join(process.cwd(), targetDir);
+    await fs.ensureDir(targetDirPath);
+
+    // Copy component file directly to target directory
+    const targetFilePath = path.join(targetDirPath, componentFileName);
+    
+    // Read component file content
+    let content = await fs.readFile(componentFilePath, "utf-8");
+    
+    // Replace imports if needed (e.g., @/lib/utils -> ../../lib/utils)
+    // This is a simple implementation, can be enhanced
+    
+    await fs.writeFile(targetFilePath, content);
 
     console.log(chalk.green(`✓ Component "${componentName}" added successfully!`));
-    console.log(chalk.blue(`\nFiles created in: ${targetDir}/${componentName}`));
+    console.log(chalk.blue(`\nFile created: ${targetDir}/${componentFileName}`));
     console.log(
       chalk.yellow(
         "\nDon't forget to import and use the component in your code!"

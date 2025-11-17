@@ -4,8 +4,7 @@
   "private": true,
   "description": "Lightweight, zero-dependency React UI component library",
   "workspaces": [
-    "packages/*",
-    "apps/*"
+    "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -18,10 +17,7 @@
     "publish:cli": "cd packages/cli && npm publish --access public",
     "publish:core": "cd packages/core && npm publish --access public",
     "publish:button": "cd packages/button && npm publish --access public",
-    "publish:all": "npm run publish:cli",
-    "docs:dev": "cd docs && npm run dev",
-    "docs:build": "cd docs && npm run build",
-    "docs:preview": "cd docs && npm run preview"
+    "publish:all": "npm run publish:cli"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

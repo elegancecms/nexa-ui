@@ -50,10 +50,6 @@ function App() {
 }
 ```
 
-## 📚 Documentation
-
-Full documentation available at [docs.nexa-ui.com](https://docs.nexa-ui.com)
-
 ## 🏗️ Project Structure
 
 ```
@@ -61,10 +57,8 @@ Full documentation available at [docs.nexa-ui.com](https://docs.nexa-ui.com)
 ├── packages/
 │   ├── core/          # Core utilities and hooks
 │   ├── button/        # Button component
+│   ├── cli/           # CLI tool for adding components
 │   └── ...            # Other components
-├── apps/
-│   └── playground/    # Development playground
-└── docs/              # Documentation
 ```
 
 ## 🤝 Contributing

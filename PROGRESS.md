@@ -1,4 +1,4 @@
-# @ayz/nexa-ui - Geliştirme İlerleme Kaydı
+# @khaimerax/nexa-ui - Geliştirme İlerleme Kaydı
 
 Bu dosya projenin geliştirme sürecindeki tüm adımları kayıt altına alır.
 
@@ -65,11 +65,25 @@ Bu dosya projenin geliştirme sürecindeki tüm adımları kayıt altına alır.
 - [x] Core paket build: ✅ 4.31 KB (CJS), 4.10 KB (ESM)
 - [x] Button paket build: ✅ 2.58 KB (CJS), 2.50 KB (ESM)
 
+### ✅ Tamamlanan Ek Adımlar (Devam)
+
+#### 6. NPM Yayımlama
+- [x] NPM hesabı oluşturuldu ve giriş yapıldı
+- [x] Paket adı `@khaimerax/nexa` olarak güncellendi
+- [x] Paket başarıyla yayımlandı: https://www.npmjs.com/package/@khaimerax/nexa
+- [x] Versiyon: 0.1.0
+
+#### 7. GitHub Repository
+- [x] GitHub repository oluşturuldu: https://github.com/elegancecms/nexa-ui
+- [x] Tüm dosyalar commit edildi
+- [x] GitHub'a push edildi (developer branch)
+- [x] Repository senkronize edilebilir durumda
+
 ### 🔄 Devam Eden İşler
 
 - [ ] Tailwind CSS konfigürasyonu
 - [ ] Button component testleri
-- [ ] Playground app oluşturma
+- [ ] Yeni component'ler ekleme
 
 ### 📝 Notlar
 
@@ -80,12 +94,10 @@ Bu dosya projenin geliştirme sürecindeki tüm adımları kayıt altına alır.
 
 ### 🎯 Sonraki Adımlar
 
-1. Dependencies kurulumu (`npm install`)
-2. Build testi (`npm run build`)
-3. Tailwind CSS konfigürasyonu
-4. Playground app oluşturma (test için)
-5. Button component testleri yazma
-6. GitHub Actions CI/CD pipeline
+1. Yeni component'ler ekleme
+2. Component testleri yazma
+3. NPM paketlerini güncelleme
+4. GitHub repository'yi senkronize tutma
 
 ---
 
